@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDHL - Contact</title>
+  <link rel="stylesheet" href="./main.css">
+  <link rel="shortcut icon" href="./assets/img/logo.png"
+    type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <header class="container-header">
+    <div class="container-title">
+      <h1>Mighty Ducks</h1>
+      <h1>Hockey League</h1>
+    </div>
+    <div><a href=""><i class='bx bxs-user-circle'></i></a></div>
+  </header>
+
+  <main class="main-others">
+    <div class="navbar-float">
+      <div id="item" class="nav-content">
+        <div class="toggle-btn">
+          <img class
+            src="./assets/img/logo.png"
+            alt="">
+        </div>
+      </div>
+    </div>
+
+    <nav class="container-nav">
+      <div class="container-img-nav">
+        <img
+          src="./assets/img/logo.png"
+          width="75" alt="">
+      </div>
+      <span style="--i:3.2;">
+        <a href="./index.html"><i class='bx bxs-home'></i></a>
+      </span>
+      <span style="--i:4.7;">
+        <a href="./map.html"><i class='bx bxs-map'></i></a>
+      </span>
+      <span style="--i:6;">
+        <a href="#"><i class='bx bx-conversation'></i></i></a>
+      </span>
+      <span style="--i:2;">
+        <a href="./schedule.html"><i class='bx bxs-calendar'></i></a>
+      </span>
+      <span style="--i:0.7;">
+        <a href="./rulesabout"><i class='bx bx-book-open'></i></a>
+      </span>
+      <span style="--i:7.2;">
+        <a href="./form.html"><i class='bx bxs-edit'></i></a>
+      </span>
+      <div class="back">
+        <i class='bx bx-x'></i>
+      </div>
+    </nav>
+
+    <div class="contact_form">
+
+      <div class="formulario">
+        <h1 class="h1-form">Formulario de contacto</h1>
+        <h3 class="h3-form">Escríbenos y en breve nos pondremos en contacto contigo</h3>
+
+        <form action="submeter-formulario.php" method="post">
+
+          <div class="container-nombre">
+            <p class="p-form">
+              <label for="nombre" class="colocar_nombre label-form">Nombre
+                <span class="obligatorio">*</span>
+              </label>
+              <input class="input-form" type="text" name="introducir_nombre" id="nombre" required="obligatorio"
+                placeholder="Escribe tu Nombre">
+            </p>
+            <p class="p-form">
+              <label for="email" class="colocar_apellido label-form">Apellido
+                <span class="obligatorio">*</span>
+              </label>
+              <input class="input-form" type="text" name="introducir_apellido" id="apellido" required="obligatorio"
+                placeholder="Escribe tu Apellido">
+            </p>
+          </div>
+
+          <div class="container-contactos">
+            <p class="p-form">
+              <label for="telefone" class="colocar_telefono label-form">Teléfono
+              </label>
+              <input class="input-form" type="tel" name="introducir_telefono" id="telefono" placeholder="Escribe tu Teléfono">
+            </p>
+            <p class="p-form">
+              <label for="website" class="colocar_email label-form">Email
+                <span class="obligatorio">*</span>
+              </label>
+              <input class="input-form" type="email" name="introducir_email" id="email" placeholder="Escribe tu Email">
+            </p>
+          </div>
+          
+          <p class="p-form container-textarea">
+            <label for="mensaje" class="colocar_mensaje label-form">Mensaje
+              <span class="obligatorio">*</span>
+            </label>
+            <textarea class="textarea-form" name="introducir_mensaje" class="texto_mensaje" id="mensaje" required="obligatorio"
+              placeholder="Deja aquí tu comentario..."></textarea>
+          </p>
+
+          <div class="form-btn">
+            <button class="button-form" type="submit" name="enviar_formulario" id="enviar">
+              <p>Enviar</p>
+            </button>
+          </div>
+          
+          <p class="aviso">
+            <span class="obligatorio"> * </span>los campos son obligatorios.
+          </p>
+          
+        </form>
+      </div>
+    </div>
+
+    <p class="or">
+      or
+    </p>
+
+    <div class="container-mail-contact">
+      <p>Please email us at <a href="mailto:mdhl@chihockey.org" class="mail-mdhl" href="">mdhl@chihockey.org</a></p>
+      <p>We will reply to your email as soon as we can.</p>
+    </div>
+
+
+  </main>
+
+
+  <div id="box1"></div>
+  <div hidden id="box2"></div>
+  <footer class="container-footer">
+    <p>Mighty Ducks Hockey League™ | 2022</p>
+  </footer>
+
+  <script src="./main.js"></script>
+
+</body>
+
+</html>

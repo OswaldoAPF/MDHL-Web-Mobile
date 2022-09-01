@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDHL - Home</title>
+    <link rel="shortcut icon" href="./assets/img/kisspng-anaheim-ducks-national-hockey-league-arizona-coyot-5ae50cfacf7dc2.5975134515249605068499.png" type="image/x-icon">
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+  <header class="container-header">
+    <div class="container-title">
+      <h1>Mighty Ducks</h1>
+      <h1>Hockey League</h1>
+    </div> 
+    <div><a href=""><i class='bx bxs-user-circle'></i></a></div>
+  </header>
+  
+  <main class="main-home">
+    <div>
+      <h2 class="welcome">¡Welcome!</h2>
+    </div>
+    <nav class="navbar-home">
+      <div id="item" class="nav-content-home">
+        <div class="toggle-btn">
+          <img class src="./assets/img/logo.png"  alt="">
+        </div>
+        <span style="--i:3.2;">
+          <a href="./index.html"><i class='bx bxs-home'></i></a>
+        </span>
+        <span style="--i:4.7;">
+          <a href="./map.html"><i class='bx bxs-map'></i></a>
+        </span>
+        <span style="--i:6;">
+          <a href="./contact.html"><i class='bx bx-conversation'></i></a>
+        </span>
+        <span style="--i:2;">
+          <a href="./schedule.html"><i class='bx bxs-calendar'></i></a>
+        </span>
+        <span style="--i:0.7;">
+          <a href="./rulesabout"><i class='bx bx-book-open'></i></a>
+        </span>
+        <span style="--i:7.2;">
+          <a href="./form.html"><i class='bx bxs-edit'></i></a>
+        </span>
+      </div>
+    </nav>
+  </main>
+  
+  <footer class="container-footer">
+    <p>Mighty Ducks Hockey League™ | 2022</p>
+  </footer>
+  
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAwr3ayIxvEsV8wpXdqfR-d8ujvEyLyuyg",
+      authDomain: "mdhl-it-f6451.firebaseapp.com",
+      projectId: "mdhl-it-f6451",
+      storageBucket: "mdhl-it-f6451.appspot.com",
+      messagingSenderId: "860008507473",
+      appId: "1:860008507473:web:c32b9d434841984ad73070"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
+  <!-- <script src="./main.js"></script> -->
+  </body>
+
+</html>
