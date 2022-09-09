@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MDHL - Map & Locations</title>
+  <title>MDHL - Login</title>
   <link rel="stylesheet" href="./main.css">
   <link rel="shortcut icon" href="./assets/img/logo.png"
     type="image/x-icon">
@@ -20,7 +20,7 @@
       <h1>Mighty Ducks</h1>
       <h1>Hockey League</h1>
     </div>
-    <div><a href="./login.html"><i class='bx bxs-user-circle'></i></a></div>
+    <div><a href="#"><i class='bx bxs-user-circle'></i></a></div>
   </header>
 
   <main class="main-others">
@@ -42,7 +42,7 @@
         <a href="./index.html"><i class='bx bxs-home'></i></a>
       </span>
       <span style="--i:4.7;">
-        <a href="#"><i class='bx bxs-map'></i></a>
+        <a href="./map.html"><i class='bx bxs-map'></i></a>
       </span>
       <span style="--i:6;">
         <a href="./contact.html"><i class='bx bx-conversation'></i></i></a>
@@ -58,35 +58,29 @@
       </span>
     </nav>
 
-    
-    
-    <div class="container-maps">
-      <h3>MDHL Locations</h3>
-      <iframe class="maps" src="https://www.google.com/maps/d/u/6/embed?mid=1ZWpeVbrRvz5VP-lKvImcXcoUrdSfgGw&ehbc=2E312F"></iframe>    
+    <div class="container-login">  	
+      <input type="checkbox" id="chk" aria-hidden="true">
+      
+      <div class="signup">
+          <form>
+            <label class="label-login" for="chk" aria-hidden="true">Login</label>
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <button>Login</button>
+          </form>
+        </div>
+        
+        <div class="login">
+          <form>
+            <label class="label-signup" for="chk" aria-hidden="true">Sign up</label>
+            <input type="text" name="txt" placeholder="User name" required="">
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <button>Sign up</button>
+          </form>
+        </div>
     </div>
 
-    <div class="container-locations">
-
-      <h3>AJ Katzenmaier</h3>
-      <p>24 W Walton St, Chicago, IL 60610, EE. UU.</p>
-
-      <h3>Greenbay</h3>
-      <p>N Orleans St, Chicago, IL 60614, EE. UU.</p>
-
-      <h3>Howard A Yeager</h3>
-      <p>W Belden Ave, Chicago, IL 60614, EE. UU.</p>
-
-      <h3>South</h3>
-      <p>1212 S Plymouth Ct, Chicago, IL 60605, EE. UU.</p>
-
-      <h3>Marjorie P Hart</h3>
-      <p>N Orchard St, Chicago, IL 60614, EE. UU.</p>
-
-      <h3>North</h3>
-      <p>W Schiller St, Chicago, IL 60610, EE. UU.</p>
-
-    </div>
-   
   </main>
 
 

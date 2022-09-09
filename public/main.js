@@ -10,18 +10,18 @@ toggleBtn.addEventListener("click", () => {
 
 
 
-var dragItem = document.querySelector("#item");
-var box1 = document.querySelector("#box1");
-var box2 = document.querySelector("#box2");
-var container = dragItem;
+let dragItem = document.querySelector("#item");
+let box1 = document.querySelector("#box1");
+let box2 = document.querySelector("#box2");
+let container = dragItem;
 //Declare Variables
-var active = false;
-var currentX;
-var currentY;
-var initialX;
-var initialY;
-var xOffset = 0;
-var yOffset = 0;
+let active = false;
+let currentX;
+let currentY;
+let initialX;
+let initialY;
+let xOffset = 0;
+let yOffset = 0;
 
 //Add Event Listeners for Touchscreens
 container.addEventListener("touchstart", dragStart, false);
@@ -127,16 +127,5 @@ function showPreviousItem() {
   console.log(count);
 }
 
-function keyPress(e) {
-  e = e || window.event;
-  
-  if (e.keyCode == '37') {
-    showPreviousItem();
-  } else if (e.keyCode == '39') {
-    showNextItem();
-  }
-}
-
 nextItem.addEventListener('click', showNextItem);
 previousItem.addEventListener('click', showPreviousItem);
-document.addEventListener('keydown', keyPress);
