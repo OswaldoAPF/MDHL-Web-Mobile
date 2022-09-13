@@ -8,7 +8,6 @@ createApp({
       nav: "home",
       next: 0,
       nextTable: 0,
-      title: "",
     }
   },
   created(){
