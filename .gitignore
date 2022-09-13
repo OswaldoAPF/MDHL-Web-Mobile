@@ -66,10 +66,10 @@ node_modules/
 .env
 
 
-firebase.json
+./firebase.json
 
-firestore.indexes.json
+./firestore.indexes.json
 
-firestore.rules
+./firestore.rules
 
-.firebaserc
+./.firebaserc

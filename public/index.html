@@ -1,67 +1,971 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDHL - Home</title>
-    <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="./main.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <title>MDHL - Home</title>
 </head>
 
 <body>
 
-  <header class="container-header">
-    <div class="container-title">
-      <h1>Mighty Ducks</h1>
-      <h1>Hockey League</h1>
-    </div> 
-    <div><a href=""><i class='bx bxs-user-circle'></i></a></div>
-  </header>
-  
-  <main class="main-home">
-    <div>
-      <h2 class="welcome">¡Welcome!</h2>
-    </div>
-    <nav class="navbar-home">
-      <div id="item" class="nav-content-home">
-        <div class="toggle-btn">
-          <img class src="./assets/img/logo.png"  alt="">
+  <div id="app">
+    
+    <header>
+      <div class="container-header">
+        <img v-if="page != 'home'" class="img-header" src="./assets/img/logo.png" alt="logo">
+        <div class="container-title">
+          <h1>Mighty Ducks</h1>
+          <h1>Hockey League</h1>
         </div>
-        <span style="--i:3.2;">
-          <a href="#"><i class='bx bxs-home'></i></a>
-        </span>
-        <span style="--i:4.7;">
-          <a href="./map.html"><i class='bx bxs-map'></i></a>
-        </span>
-        <span style="--i:6;">
-          <a href="./contact.html"><i class='bx bx-conversation'></i></a>
-        </span>
-        <span style="--i:2;">
-          <a href="./schedule.html"><i class='bx bxs-calendar'></i></a>
-        </span>
-        <span style="--i:0.7;">
-          <a href="./rulesabout.html"><i class='bx bx-book-open'></i></a>
-        </span>
-        <span style="--i:7.2;">
-          <a href="./form.html"><i class='bx bxs-edit'></i></a>
-        </span>
+        <div><button @click="page = 'login', nav = 'other', navOpen = false, changeTitle()"><i class='bx bxs-user-circle'></i></button></div>
       </div>
-    </nav>
-  </main>
+    </header>
+    
+    <main>
+
+      <!----------- HOME ------------->
+
+      <template v-if="page === 'home'">
+        <div class="main-home">
+          <div>
+            <h2 class="welcome">¡Welcome!</h2>
+          </div>
+          
+          <div class="container-navbar">
+            <nav class="navbar-home">
+              <div class="nav-content-home">
+                <div class="toggle-btn">
+                  <img class src="./assets/img/logo.png" alt="logo">
+                </div>
+                <span style="--i:3.2;">
+                  <button @click="page = 'home', nav = 'home', navOpen = false, changeTitle()"><i class='bx bxs-home'></i></button>
+                </span>
+                <span style="--i:4.7;">
+                  <button @click="page = 'map', nav = 'other', navOpen = false, changeTitle()"><i class='bx bxs-map'></i></button>
+                </span>
+                <span style="--i:6;">
+                  <button @click="page = 'contact', nav = 'other', navOpen = false, changeTitle()"><i class='bx bx-conversation'></i></button>
+              </span>
+              <span style="--i:2;">
+                <button @click="page = 'schedule', nav = 'other', navOpen = false, changeTitle()"><i class='bx bxs-calendar'></i></button>
+              </span>
+              <span style="--i:0.7;">
+                <button @click="page = 'rules', nav = 'other', navOpen = false, changeTitle()"><i class='bx bx-book-open'></i></button>
+              </span>
+              <span style="--i:7.2;">
+                <button @click="page = 'form', nav = 'other', navOpen = false, changeTitle()"><i class='bx bxs-edit'></i></button>
+              </span>
+            </div>
+          </nav>
+        </div>
+
+        <div class="div-null">
+        </div>
+
+      </div>
+    </template>
+
+    
+
+      <div v-show="nav === 'other'" class="navbar-float">
+        <div id="item" class="toggle-btn" @click="openNav" :class="{'active' : navOpen}">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+        
+        <nav class="container-nav" :class="{'open' : navOpen}">
+          <div class="container-img-nav">
+            <img src="./assets/img/logo.png" width="75" alt="logo">
+          </div>
+          <span style="--i:3.2;">
+            <button @click="page = 'home', nav = 'home', navOpen = false, changeTitle()"><i class='bx bxs-home'></i></button>
+          </span>
+          <span style="--i:4.7;">
+            <button @click="page = 'map', nav = 'other', navOpen = false, changeTitle()"><i class='bx bxs-map'></i></button>
+          </span>
+          <span style="--i:6;">
+            <button @click="page = 'contact', nav = 'other', navOpen = false, changeTitle()"><i class='bx bx-conversation'></i></button>
+          </span>
+          <span style="--i:2;">
+            <button @click="page = 'schedule', nav = 'other', navOpen = false, changeTitle()"><i class='bx bxs-calendar'></i></button>
+          </span>
+          <span style="--i:0.7;">
+            <button @click="page = 'rules', nav = 'other', navOpen = false, changeTitle()"><i class='bx bx-book-open'></i></button>
+          </span>
+          <span style="--i:7.2;">
+            <button @click="page = 'form', nav = 'other', navOpen = false, changeTitle()"><i class='bx bxs-edit'></i></button>
+          </span>
+        </nav>
+        
+
+      <!----------- RULES ------------->
+
+
+        <template v-if="page === 'rules'">
+          
+          <div class="main-others">
+
+            <section class="container-about">
+              <h3>About Us</h3>
+              <h4>Mission</h4>
+              <p>
+                To support young athletes living in Chicago's northside neighborhoods, who have an interest in learning and
+                playing soccer,
+                with opportunities to learn and practice skills related to the game of soccer, specifically those skills
+                around team cooperation and good sportsmanship.
+              </p>
   
-  <footer class="container-footer">
-    <p>Mighty Ducks Hockey League™ | 2022</p>
-  </footer>
+              <h4>Vision</h4>
+              <p>
+                The Mighty Ducks Hockey League aspires to develop strong, well-rounded,
+                and mindful athletes through the building of character, self-discipline, and leadership.
+              </p>
   
+              <h4>General Information</h4>
+              <p>
+                The Mighty Ducks Hockey League was established in 1996 to provide athletes residing in Chicago's northside
+                neighborhoods an environment in which to learn and play soccer. To be a member of MDHL,
+                you must be between the ages of 4 - 12 and reside in a Chicago northside neighborhood. MDHL is run by a
+                small full-time staff, and relies on the generous volunteer time of parents and previous league members.
+              </p>
+            </section>
+  
+            <div class="container-title-rules">
+              <h3>Mighty Ducks Hockey League</h3>
+              <h4>Rules of Play &amp; Policies</h4>
+              <p>FIFA rules shall govern MDHL</p>
+              <p>play except as modified herein.</p>
+            </div>
+  
+            <div class="col">
+              <div class="tabs">
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck1">
+                  <label class="tab-label" for="chck1">Sportsmanship</label>
+                  <div class="tab-content">
+  
+                    <ul>
+                      <li>The common interest that members of the Association share is to inspire youth to practice the
+                        ideals
+                        of sportsmanship and fair play. Any player, coach, team, parent, spectator, administrator or referee
+                        whose behavior detracts from this purpose is subject to disciplinary action regardless of technical
+                        soccer background, expertise, accomplishments or standing.</li>
+                    </ul>
+  
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck2">
+                  <label class="tab-label" for="chck2">Fifa Field Regulations</label>
+                  <div class="tab-content">
+                    <ol>
+                      <li>
+                        <h3>Dimensions.</h3> FIFA Law 1 provides for flexible external field dimensions within a given
+                        maximum
+                        and minimum width and length. These dimensions should be adhered to for all fields used by teams
+                        under
+                        12 and older.
+                      </li>
+  
+                      <li>
+                        <h3>Competition Fields.</h3> Fields used within the competition program must be a minimum of 100 x
+                        60
+                        yards. Leagues, districts or associations participating in the state competition program that are
+                        unable to provide a field that meets these minimum requirements must advise the State Competition
+                        Board which will assign its Fields Committee to inspect the field and recommend to the Board whether
+                        or not a waiver of the minimum dimensions should be granted. Teams from leagues, districts or
+                        associations that are unable to provide an acceptable field may be required to play all their games
+                        away.
+                      </li>
+  
+                      <li>
+                        <h3>Fields Used By Young Age Groups.</h3>
+                        <ol type="a">
+                          <li>U-6 play on a field approximately 20 X 40 yards with no penalty areas. Fields for older age
+                            groups should be progressively larger.</li>
+                          <li>U-8 plays on a field 40-50 yards in length and 20-30 yards width.</li>
+                          <li>U-10 play on a field 70-80 yards in length and 40-50 yards in width.</li>
+                          <li>In addition, fields used by young age groups may have their internal dimensions and size of
+                            goal
+                            similarly modified.</li>
+                        </ol>
+                      </li>
+  
+                      <li>
+                        <h3>Team Bench Areas</h3>
+                        <ol type="a">
+                          <li>Recreation &amp; District Programs
+                            <ul>
+                              <li>The decision for team/spectator placement on the field will be made by the governing body
+                                of
+                                that team. A team's bench area shall consist of that area at least one (1) yard away from
+                                the
+                                touchline and extending to twenty yards (20) both ways from the halfway line. In the event
+                                that field 2 conditions require team benches to be on the same side of the field, a team's
+                                bench area shall consist of that area two(2) yards away from the touchline and extending
+                                twenty yards one (1) way from the halfway line.</li>
+                              <li>The home team has first choice as to where it wishes to locate its bench area. Coaches and
+                                substitutes are required to remain within their bench area during the game. Parents and
+                                spectators should occupy the same side of the field as the team they are supporting.</li>
+                            </ul>
+                          </li>
+                          <li>State Competition League Only
+                            <ul>
+                              <li>Except where it is determined by the referee to be impractical, team bench areas shall be
+                                along the same touchline. Each team bench area shall be located two yards outside the
+                                touchline, beginning not closer than five yards from midfield and extending not further than
+                                twenty yards from midfield. The home team shall have the right to choose the location of its
+                                bench area. Coaches and substitutes must remain within their team's bench area during the
+                                game.</li>
+                              <li>Parents and spectators must occupy the sideline opposite the team bench areas. Supporters
+                                of
+                                a team must assemble on the side of the midfield facing the team bench area of that team.
+                                There shall be a buffer zone extending ten yards on each side of the midfield that may not
+                                be
+                                occupied by parents or spectators. Match officials shall be empowered to enforce these
+                                provisions and may suspend or terminate games in the event that any team, coach, parent, or
+                                spectator declines to abide by requests from match officials to comply with these standards.
+                              </li>
+                            </ul>
+                          </li>
+                        </ol>
+                      </li>
+                    </ol>
+                    <h3>Equipment</h3>
+                    <ul>
+                      <li>We will abide by and accept equipment standards as defined by FIFA, USSF and USYSA.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck3">
+                  <label class="tab-label" for="chck3">Number of Players</label>
+                  <div class="tab-content">
+                    <ul>
+                      <li>
+                        <h3>Team Size.</h3> Except as noted below, below, team rosters shall consist of not less than eleven
+                        nor more than eighteen players. A team must have at least seven (7) players present and able to play
+                        before referees are permitted to start a sanctioned game. No more than eleven (11) players per team
+                        may be on the field at any one time during the game.
+                      </li>
+                      <li>
+                        <h3>Size of Age Group Teams.</h3> In order to give player's maximum opportunity to develop in the
+                        game of soccer, U-6 through U-1O play modified rules and size of roster as stated in United States
+                        Youth Soccer Association (USYSA) rules. It is strongly recommended that U-6 and U-8 play 4 v 4. UYSA
+                        shall not sanction games involving teams under 10 or younger unless such games are conducted with
+                        not more than eight (8) players per side. (National rule 4036 section 2)
+                      </li>
+                      <li>Recreational/Developmental players at other ages or where numbers in the playing area are low are
+                        strongly encouraged to play small-sided games on reduced field size.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck4">
+                  <label class="tab-label" for="chck4">Substitutions</label>
+                  <div class="tab-content">
+                    <ul>
+                      <li>Teams may make an unlimited number of substitutions at the times indicated below. A player who has
+                        been replaced may re-enter the game as a substitute at a later time.
+                        <ol>
+                          <li>Prior to a throw-in your favor.</li>
+                          <li>Prior to a goalkick by either team.</li>
+                          <li>After a goal by either team.</li>
+                          <li>After an injury, by either team, when the referee stops play.</li>
+                          <li>At half time.</li>
+                          <li>When a player has been &quot;cautioned&quot;, only the player receiving &quot;caution&quot;
+                            may be substituted.</li>
+                        </ol>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck5">
+                  <label class="tab-label" for="chck5">Confiscated Player Passes</label>
+                  <div class="tab-content">
+                    <ul>
+                      <li>Passes of any individual(s) ejected from any match shall be retained after the match by the
+                        referee. The pass of any individual who has received a third caution (yellow card) during a playing
+                        year shall be confiscated by the referee at the conclusion of the match in which the third caution
+                        was received. That player will be suspended from playing in the next game in which the offending
+                        participant would otherwise be eligible to participate. This process will continue so that for every
+                        third yellow card received during a playing year, the player will be suspended from playing in the
+                        next game (after the receipt of a third yellow card) for which the offending participate would
+                        otherwise be eligible to participate. The referee shall deliver all confiscated passes to the UYSA
+                        State Office within forty-eight (48) hours of the conclusion of the match.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck6">
+                  <label class="tab-label" for="chck6">All-Play</label>
+                  <div class="tab-content">
+                    <ul>
+                      <li>All-play means that every recreation player on every team shall play at least fifty percent of
+                        each game. Coaches in the competition program are encouraged to play their players 50% of each game.
+                        <ul style="list-style-type:circle;">
+                          <li>A Coach shall be permitted to not play a player 50% of each game under special circumstances,
+                            e.g., unexcused absences from practice and/or games, ungentlemanly conduct at practice and/or
+                            games, and injuries.</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck7">
+                  <label class="tab-label" for="chck7">Player's Equipment</label>
+                  <div class="tab-content">
+                    <ul>
+                      <li>Where the uniform colors of both teams are so similar that the referee orders a change, the
+                        designated home team must change to colors distinct from those of the opponent.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck8">
+                  <label class="tab-label" for="chck8">Mixed Teams</label>
+                  <div class="tab-content">
+                    <ul>
+                      <li>
+                        <h3>Girls Playing On Boys' Teams.</h3> Girls are eligible to play on boys'teams with parent/guardian
+                        permission.
+                      </li>
+                      <li>
+                        <h3>Types of Teams.</h3> Teams with females only are Girls Teams. All others are Boys Teams.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck9">
+                  <label class="tab-label" for="chck9">Coaching from the Sidelines</label>
+                  <div class="tab-content">
+                    <ul>
+                      <li>Coaching from the sidelines, i.e., giving direction to one's own team on points of strategy and
+                        position, is permitted provided that:
+                        <ol>
+                          <li>No mechanical, electrical or other devices are used to amplify the voice.</li>
+                          <li>The tone of voice is informative and not a harangue.</li>
+                          <li>The coaching takes place within the team's bench area.</li>
+                          <li>No coach, substitute, player or spectator is to make derogatory remarks or gestures to the
+                            referees, linesmen, players, substitutes or spectators.</li>
+                          <li>No coach, player, substitute or spectator is to use profanity or incite, in any manner,
+                            disruptive behavior of any kind.</li>
+                        </ol>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck10">
+                  <label class="tab-label" for="chck10">Game Termination</label>
+                  <div class="tab-content">
+                    <ul>
+                      <li>Any game terminated after 15 minutes into the second half by the referee by reason of the
+                        elements, or by reason of grave disorder on the part of the coaches, players or spectators of a team
+                        that is losing at the point that the game is terminated, shall stand as a completed game. If a team
+                        is ahead and the game is called because of their actions they will lose the game 1-0.
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck11">
+                  <label class="tab-label" for="chck11">Conditions of Replay of Games</label>
+                  <div class="tab-content">
+                    <ul>
+                      <li>Any game which is required to be replayed as a result of any protest orappeal, shall be subject to
+                        the following conditions:
+                        <ol>
+                          <li>The game shall be replayed on the same field, as was the suspended or protested game, unless
+                            otherwise agreed by the coaches.</li>
+                          <li>Impartial referees shall be assigned to the new game.</li>
+                          <li>The PROTEST AND APPEALS COMMITTEE shall have the power to impose such additional conditions on
+                            the replay of the game, as it deems appropriate under the circumstances.</li>
+                        </ol>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab">
+                  <input class="input-rules" type="checkbox" id="chck12">
+                  <label class="tab-label" for="chck12">Referee Responsibilities</label>
+                  <div class="tab-content">
+                    <ul>
+                      <li> The referee shall verify the identity of the players and coaches with his/her player pass. He
+                        shall collect the passes of those players and coaches who are to participate in the game. The
+                        referee must allow no player into the game for whom he/she has no pass.</li>
+                      <li>Upon completion of the game, the referee shall send his/her report to the UYSA offices within four
+                        (4) days, holidays excluded. If a coach or a player is ejected, the referee report form is required
+                        within forty-eight (48) hours along with the player/coach pass.</li>
+                      <li>A referee report form must be filed for every game played.</li>
+                      <li>Each team must determine whether or not referees are registered prior to the start of each game.
+                        Upon request, referees officiating at any game must willingly and without bias, show documentation
+                        regarding their certification level and registration standing with the USSF to coach, assistant
+                        coach, or team captain of teams participating in that game. Prior to the game a coach may decide to
+                        postpone the game if the referees do not produce the requested documentation. The game is to be
+                        replayed at a later date.</li>
+                      <li>Referees not complying with this section will be referred to the Disciplinary Committee.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </template>
+
+
+      <!----------- MAP ------------->      
+
+
+      <template v-if="page === 'map'">
+
+        <div class="container-maps">
+          <h3>MDHL Locations</h3>
+          <iframe class="maps" src="https://www.google.com/maps/d/u/6/embed?mid=1ZWpeVbrRvz5VP-lKvImcXcoUrdSfgGw&ehbc=2E312F"></iframe>    
+        </div>
+    
+        <div class="container-locations">
+    
+          <h3>AJ Katzenmaier</h3>
+          <p>24 W Walton St, Chicago, IL 60610, EE. UU.</p>
+    
+          <h3>Greenbay</h3>
+          <p>N Orleans St, Chicago, IL 60614, EE. UU.</p>
+    
+          <h3>Howard A Yeager</h3>
+          <p>W Belden Ave, Chicago, IL 60614, EE. UU.</p>
+    
+          <h3>South</h3>
+          <p>1212 S Plymouth Ct, Chicago, IL 60605, EE. UU.</p>
+    
+          <h3>Marjorie P Hart</h3>
+          <p>N Orchard St, Chicago, IL 60614, EE. UU.</p>
+    
+          <h3>North</h3>
+          <p>W Schiller St, Chicago, IL 60610, EE. UU.</p>
+
+        </div>
+
+      </template>
+
+
+      <!----------- FORM ------------->
+
+
+      <template v-if="page === 'form'">
+        <div class="main-others">
+
+          <form>
+            <div class="container-form-reg">
+              <div class="slider">
+                <div v-if="next === 0" :class="{'actives' : next === 0 }" class="div-slider">
+                  <h2>Registration Form</h2>
+                  <div class="container-data">
+                    <div class="form-name">
+                      <div>
+                        <label for="name">First Name</label>
+                        <input type="text" name="name" id="name" placeholder="Write your name" required>
+                      </div>
+                      <div>
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" id="last_name" placeholder="Write your last name" required>
+                      </div>  
+                    </div>
+                    <div class="form-adress">
+                      <div>
+                        <label for="address">Street Address</label>
+                        <input type="text" name="address" id="address" placeholder="Adress 1" required>
+                      </div>
+                      <div>
+                        <label for="city">City</label>
+                        <input type="text" name="city" id="city" placeholder="Write your city" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container-data-2">
+                    <label for="birth_date">Birth Date (<span>dd</span>/<span>mm</span>/<span>yyyy</span>)</label>
+                    <input type="date" name="birth_date" id="birth_date" required>
+                    <div class="container-gender">
+                      <span>Gender:</span>
+                      <div>
+                        <label for="gender_f">Female
+                          <input type="radio" name="gender" id="gender_f" value="female" required>
+                        </label>
+                        <label for="gender_m">Male
+                          <input type="radio" name="gender" id="gender_m" value="male" required>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container-grade">
+                    <span>Grade:</span>
+                    <div class="container-grade-1">
+                      <label for="pre_school">Pre-School
+                        <input type="radio" name="grade" id="pre_school" value="pre_school" required>
+                      </label>
+                      <label for="1st">1st
+                        <input type="radio" name="grade" id="1st" value="1st" required>
+                      </label>
+                      <label for="2st">2st
+                        <input type="radio" name="grade" id="2st" value="2st" required>
+                      </label>
+                    </div>
+                    <div class="container-grade-2">
+                      <label for="3st">3st
+                        <input type="radio" name="grade" id="3st" value="3st" required>
+                      </label>
+                      <label for="4st">4st
+                        <input type="radio" name="grade" id="4st" value="4st" required>
+                      </label>
+                      <label for="5st">5st
+                        <input type="radio" name="grade" id="5st" value="5st" required>
+                      </label>
+                    </div>  
+                  </div>
+                </div>
+                <div v-if="next === 1" :class="{'actives' : next === 1}" class="div-slider">
+                  <div class="container-select">
+                    <div>
+                      <h3>Which elementary school do you live near</h3>
+                    </div>
+                    <select name="schools" id="schools" required>
+                      <option disabled selected value="">Closest School:</option>
+                      <option value="katzenmaier">AJ Katzenmaier</option>
+                      <option value="greenbay">Greenbay</option>
+                      <option value="howard">Howard A Yeager</option>
+                      <option value="marjorie">Marjorie P Hart</option>
+                      <option value="north">North Elementary</option>
+                      <option value="south">South Elementary</option>
+                    </select>
+                  </div>
+                  <div class="container-position">
+                    <div>
+                      <h3>What position(s) do you normally play (Check all that apply)</h3>
+                    </div>
+                    <div class="container-position-2">
+                      <div>
+                        <label for="forward">Forward</label>
+                        <input type="checkbox" id="forward" name="position" value="forward">
+                      </div>
+                      <div>
+                        <label for="defense">Defense</label>
+                        <input type="checkbox" id="defense" name="position" value="defense">
+                      </div>
+                      <div>
+                        <label for="midfield">Midfield</label>
+                        <input type="checkbox" id="midfield" name="position" value="midfield">
+                      </div>
+                      <div>
+                        <label for="goalkeeper">Goalkeeper</label>
+                        <input type="checkbox" id="goalkeeper" name="position" value="goalkeeper">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="h3-size">
+                    <h3>Uniform Size:</h3>
+                  </div>
+                  <div class="container-size">
+                    <div class="container-size-1">
+                      <label for="size_ys">Youth Smal
+                        <input type="radio" name="size" id="size_ys" value="Youth Smal" required>
+                      </label>
+                      <label for="size_ym">Youth Medium
+                        <input type="radio" name="size" id="size_ym" value="Youth Medium" required>
+                      </label>
+                      <label for="size_yl">Youth Large
+                        <input type="radio" name="size" id="size_yl" value="Youth Large" required>
+                      </label>
+                      <label for="size_s">Small
+                        <input type="radio" name="size" id="size_s" value="Small" required>
+                      </label>
+                    </div>
+                    <div class="container-size-2">
+                      <label for="size_m">Medium
+                        <input type="radio" name="size" id="size_m" value="Medium" required>
+                      </label>
+                      <label for="size_l">Large
+                        <input type="radio" name="size" id="size_l" value="Large" required>
+                      </label>
+                      <label for="size_el">Extra-Large
+                        <input type="radio" name="size" id="size_el" value="Extra-Large" required>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div v-if="next === 2" :class="{'actives' : next === 2}" class="div-slider">
+                  <div class="container-permission">
+                    <h3>Permission to Play</h3>
+                    <div><p> I, the parent or guardian of the minor registrant, agree that the registrant and I will be abide by
+                      all the rules of the Mighty Ducks Hockey League (MDHL).
+                      In recognizing the possibility of physical injury associated with hockey and in consideration for the
+                      "League" accepting the registrant for its hockey programs and activities, I hereby release, discharge,
+                      and/or otherwise indemnify MDHL, their employees and associated personnel and volunteers, including the
+                      facilities used for practices and games, against any claim by or on behalf of the registrant as a result
+                      of the registrant's participation in the programand/orbeing transported to or from MDHL sponsored
+                      activities,
+                      which transportation.
+                      By entering your name below, I hereby agree and authorize the above. In addition, by signing below, I
+                      also ackowledge that I have read the cancelattion policy and agree to its terms.</p></div>
+                  </div>
+                  <div class="container-permission-2">
+                    <div>
+                      <label for="parent">Parent/Guardian Signature:</label>
+                      <input type="text" name="parent" id="parent" required>
+                    </div>
+                    <div class="container-permission-date">
+                      <label for="date">Date:</label>
+                      <input type="date" name="date" id="date" required>
+                    </div>
+                  </div>
+                  <div class="container-btn-reg">
+                    <button class="button-data" type="submit">Send</button>
+                  </div>
+                </div>
+              </div>
+      
+              <nav class="slider-nav">
+                <ul>
+                  <li class="arrow">
+                    <button v-if="next != 0" @click="next --" class="previous button-slider">
+                      <span>
+                        <i class='bx bx-left-arrow-alt'></i>
+                      </span>
+                    </button>
+                  </li>
+                  <li class="arrow">
+                    <button v-if="next != 2" @click="next ++" class="next button-slider">
+                      <span>
+                        <i class='bx bx-right-arrow-alt'></i>
+                      </span>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </form>
+        </div>
+      </template>
+
+
+      <!----------- CONTACT ------------->
+
+
+      <template v-if="page === 'contact'">
+
+        <div class="main-others">
+
+          <div class="contact_form">
+  
+            <div class="formulario">
+              <h1 class="h1-form">Formulario de contacto</h1>
+              <h3 class="h3-form">Escríbenos y en breve nos pondremos en contacto contigo</h3>
+      
+              <form>
+      
+                <div class="container-nombre">
+                  <p class="p-form">
+                    <label for="nombre" class="colocar_nombre label-form">Nombre
+                      <span class="obligatorio">*</span>
+                    </label>
+                    <input class="input-form" type="text" name="introducir_nombre" id="nombre" required="obligatorio"
+                      placeholder="Escribe tu Nombre">
+                  </p>
+                  <p class="p-form">
+                    <label for="email" class="colocar_apellido label-form">Apellido
+                      <span class="obligatorio">*</span>
+                    </label>
+                    <input class="input-form" type="text" name="introducir_apellido" id="apellido" required="obligatorio"
+                      placeholder="Escribe tu Apellido">
+                  </p>
+                </div>
+      
+                <div class="container-contactos">
+                  <p class="p-form">
+                    <label for="telefone" class="colocar_telefono label-form">Teléfono
+                    </label>
+                    <input class="input-form" type="tel" name="introducir_telefono" id="telefono" placeholder="Escribe tu Teléfono">
+                  </p>
+                  <p class="p-form">
+                    <label for="website" class="colocar_email label-form">Email
+                      <span class="obligatorio">*</span>
+                    </label>
+                    <input class="input-form" type="email" name="introducir_email" id="email" placeholder="Escribe tu Email">
+                  </p>
+                </div>
+                
+                <p class="p-form container-textarea">
+                  <label for="mensaje" class="colocar_mensaje label-form">Mensaje
+                    <span class="obligatorio">*</span>
+                  </label>
+                  <textarea class="textarea-form" name="introducir_mensaje" class="texto_mensaje" id="mensaje" required="obligatorio"
+                    placeholder="Deja aquí tu comentario..."></textarea>
+                </p>
+      
+                <div class="form-btn">
+                  <button class="button-form" type="submit" name="enviar_formulario" id="enviar">
+                    <p>Enviar</p>
+                  </button>
+                </div>
+                
+                <p class="aviso">
+                  <span class="obligatorio"> * </span>los campos son obligatorios.
+                </p>
+                
+              </form>
+            </div>
+          </div>
+      
+          <p class="or">
+            or
+          </p>
+      
+          <div class="container-mail-contact">
+            <p>Please email us at <a href="mailto:mdhl@chihockey.org" class="mail-mdhl" href="">mdhl@chihockey.org</a></p>
+            <p>We will reply to your email as soon as we can.</p>
+          </div>
+      
+          <div>
+            <h4>Social Networks</h4>
+  
+          </div>
+        </div>
+
+      </template>
+
+
+      <!----------- SCHEDULE ------------->
+
+
+      <template v-if="page === 'schedule'">
+
+        <div class="main-others">
+
+          <div class="title_table">
+            <h3>Fall Schedule</h3>
+            <p>* All games take place on Saturday.</p>
+          </div>
+      
+          <div class="container-table">
+            <div class="slider">
+              <div v-if="nextTable === 0" :class="{'actives' : nextTable === 0}" class="div-slider">
+                <div class="container-table">
+                  <table class="table">
+                    <caption></caption>
+                    <thead>
+                        <tr>
+                            <th>September</th>
+                            <th>Teams</th>
+                            <th>Location</th>
+                            <th>Times</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">9/01</td>
+                            <td>U1 and U4</td>
+                            <td><a href="./map.html">AJ Katzenmaier</a></td>
+                            <td>9:30 a.m.</td>
+                        </tr>
+                        <tr>
+                            <td>U3 and U2</td>
+                            <td><a href="./map.html">Greenbay</a></td>
+                            <td>1:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">9/08</td>
+                            <td>U5 and U6</td>
+                            <td><a href="./map.html">Howard A Yeager</a></td>
+                            <td>9:30 a.m.</td>
+                        </tr>
+                        <tr>
+                            <td>U6 and U1</td>
+                            <td><a href="./map.html">Marjorie P Hart</a></td>
+                            <td>1:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">9/15</td>
+                            <td>U2 and U4</td>
+                            <td><a href="./map.html">North</a></td>
+                            <td>9:30 a.m.</td>
+                        </tr>
+                        <tr>
+                            <td>U3 and U5</td>
+                            <td><a href="./map.html">AJ Katzenmaier</a></td>
+                            <td>1:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">9/22</td>
+                            <td>U1 and U3</td>
+                            <td><a href="./map.html">South</a></td>
+                            <td>9:30 a.m.</td>
+                        </tr>
+                        <tr>
+                            <td>U2 and U6</td>
+                            <td><a href="./map.html">Howard A Yeager</a></td>
+                            <td>1:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td>9/29</td>
+                            <td>U4 and U5</td>
+                            <td><a href="./map.html">Greenbay</a></td>
+                            <td>9:30 a.m.</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+              <div v-if="nextTable === 1" :class="{'actives' : nextTable === 1}" class="div-slider">
+                <div class="container-table">
+                  <table class="table">
+                    <caption></caption>
+                    <thead>
+                        <tr>
+                            <th>October</th>
+                            <th>Teams</th>
+                            <th>Location</th>
+                            <th>Times</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">10/06</td>
+                            <td>U2 and U5</td>
+                            <td><a href="./map.html">Marjorie P Hart</a></td>
+                            <td>9:30 a.m.</td>
+                        </tr>
+                        <tr>
+                            <td>U1 and U6</td>
+                            <td><a href="./map.html">South</a></td>
+                            <td>1:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">10/08</td>
+                            <td>U3 and U4</td>
+                            <td><a href="./map.html">Howard A Yeager</a></td>
+                            <td>9:30 a.m.</td>
+                        </tr>
+                        <tr>
+                            <td>U5 and U1</td>
+                            <td><a href="./map.html">Greenbay</a></td>
+                            <td>1:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">10/20</td>
+                            <td>U6 and U3</td>
+                            <td><a href="./map.html">North</a></td>
+                            <td>9:30 a.m.</td>
+                        </tr>
+                        <tr>
+                            <td>U2 and U4</td>
+                            <td><a href="./map.html">Marjorie P Hart</a></td>
+                            <td>1:00 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">10/27</td>
+                            <td>U3 and U1</td>
+                            <td><a href="./map.html">AJ Katzenmaier</a></td>
+                            <td>9:30 a.m.</td>
+                        </tr>
+                        <tr>
+                            <td>U5 and U6</td>
+                            <td><a href="./map.html">Howard A Yeager</a></td>
+                            <td>1:00 p.m.</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+      
+            <nav class="slider-nav">
+              <ul>
+                <li class="arrow">
+                  <button v-if="nextTable != 0" @click="nextTable --" class="previous button-slider">
+                    <span>
+                      <i class='bx bx-left-arrow-alt'></i>
+                    </span>
+                  </button>
+                </li>
+                <li class="arrow">
+                  <button v-if="nextTable != 1" @click="nextTable ++" class="next button-slider">
+                    <span>
+                      <i class='bx bx-right-arrow-alt'></i>
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+      </template>
+
+      <template v-if="page === 'login'">
+        <div class="main-others">
+
+          <div class="container-login">  	
+            <input type="checkbox" id="chk" aria-hidden="true">
+            
+            <div class="signup">
+                <form>
+                  <label class="label-login" for="chk" aria-hidden="true">Login</label>
+                  <input type="email" name="email" placeholder="Email" required="">
+                  <input type="password" name="pswd" placeholder="Password" required="">
+                  <button>Login</button>
+                </form>
+              </div>
+              
+              <div class="login">
+                <form>
+                  <label class="label-signup" for="chk" aria-hidden="true">Sign up</label>
+                  <input type="text" name="txt" placeholder="User name" required="">
+                  <input type="email" name="email" placeholder="Email" required="">
+                  <input type="password" name="pswd" placeholder="Password" required="">
+                  <button>Sign up</button>
+                </form>
+              </div>
+          </div>
+        </div>
+
+      </template>
+
+    </main>
+
+    
+    
+    <div id="box1"></div>
+    <div hidden id="box2"></div>
+    
+    
+    <footer class="container-footer">
+      <p>Mighty Ducks Hockey League™ | 2022</p>
+    </footer>
+  </div>
+  
+  
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="./main.js"></script>
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
-  
+    
     // Your web app's Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyAwr3ayIxvEsV8wpXdqfR-d8ujvEyLyuyg",
@@ -71,11 +975,11 @@
       messagingSenderId: "860008507473",
       appId: "1:860008507473:web:c32b9d434841984ad73070"
     };
-  
+    
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-  </script>
-  <!-- <script src="./main.js"></script> -->
-  </body>
+    </script>
+  <script src="./float.js"></script>
+</body>
 
 </html>
